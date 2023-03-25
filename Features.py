@@ -432,16 +432,16 @@ def shutdown():
 def headlineNews():
     import requests
     from bs4 import BeautifulSoup
-    import json
-    def print_headlines(response_text):
-        soup = BeautifulSoup(response_text, 'lxml')
-        headlines = soup.find_all(attrs={"itemprop": "headline"})
-        for headline in headlines:
-            print(headline.text)
-            speakInHindi(headline.text)
-    url = 'https://inshorts.com/en/read'
+
+    url='https://www.bbc.com/news'
     response = requests.get(url)
-    print_headlines(response.text)
+
+    soup = BeautifulSoup(response.text, 'html.parser')
+    headlines = soup.find('body').find_all('h3')
+    ns=""
+    for x in headlines:
+        speakInHindi(x.text.strip())
+        ns+=x.text
 #======================================scorecard============================================================
 def scoreCard():
     from plyer import notification

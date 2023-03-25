@@ -200,9 +200,14 @@ def videoToAudio(path):
     audio=video.audio
     newfilename=f"newAudio.mp3"
     audio.write_audiofile(newfilename)
-def joke():
-    import pyjokes
-    My_joke = pyjokes.get_joke(language="en", category="neutral")
-    print(My_joke)
-    speakInHindi(My_joke)
 
+def speakInHindi(text):
+        translator = Translator()
+        translation = translator.translate(text, dest='hi')
+        text=translation.text
+        pathi=hindiTranslation
+        speakg1=gTTS(text=text,lang='hi',slow=False)
+        speakg1.save(pathi)
+        playsound(pathi)
+        os.remove(pathi)
+headlineNews()

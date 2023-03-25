@@ -241,8 +241,8 @@ class Main(QMainWindow):
     def __del__(self):
         sys.stdout = sys.__stdout__
 
-    # def run(self):
-    #     self.TaskExection
+    def run(self):
+        self.TaskExection
     def startTask(self):
         self.ui.movie = QtGui.QMovie("images\live_wallpaper.gif")
         self.ui.label.setMovie(self.ui.movie)
